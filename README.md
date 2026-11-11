@@ -1,6 +1,6 @@
 # PReMind
 
-**PReMind: Benchmarking and Learning Safe Multimodal Personal Agents**
+**PReMind: When Personal Memory Meets Visual Hazards**
 
 Code, the PReMind-Bench benchmark and the PReMind-4B model will be released here soon.
 
