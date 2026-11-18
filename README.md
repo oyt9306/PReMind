@@ -12,10 +12,6 @@
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-PReMind--4B-yellow)](https://huggingface.co/Yeongtak/PReMind-4B)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-PReMind--Bench-yellow)](https://huggingface.co/datasets/Yeongtak/PReMind-Bench)
 
-<p align="center">
-  <img src="./imgs/teaser.jpg" alt="A personal assistant has to recognize the hazard in the image and use what it knows about the person." width="100%">
-</p>
-
 > **Content warning:** the benchmark contains synthetic images of hazardous situations, such as fire and injuries.
 
 ---
