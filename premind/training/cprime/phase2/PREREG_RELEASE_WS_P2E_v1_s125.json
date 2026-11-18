@@ -1,0 +1,178 @@
+{
+ "code_sha256": {
+  "reward_v5.py": "8cc629ca559f94343395f9b99946ebfabcdc48c05244a6f9c2741b71566f6a7b",
+  "withhold_v9.py": "982a4f24a0e628008fe89ca57e345ee019821d6b54a3df9bb49e62154f78632b",
+  "vcm_data.py": "f1b0f27d51e150b73e7dad7bcaabe5745184ed41c3aabe22cacd147f352458bd",
+  "opsd.py": "73e693f4d4fad4a59bd1fd2804cf300a0170c435becdd6f946cb9b8ddb56116b",
+  "grpo_v2.py": "86acc4e9a383b3b5defecbf0192a2709e0bfe984e9f066fc7041979b831d5a3e",
+  "hf_backend.py": "495ca0280e09f1651187e90efd1c67d68e46a2fb308209cbeed76bb7c7ed4057",
+  "metrics_v9.py": "67cf037598b3075f7882c20c27e1d950dd46f69d540f3d2ada768c40c8048b5d",
+  "run_v2.py": "6b4229b3258e024db8b39c3e750fbe4bcdc015a96900bad94724ec052c22826c",
+  "paths_v2.py": "3b8082b67e7740c58f2750d57eb8f8ad908aa0b8566e85c418853507b907dfe7",
+  "teacher_table.py": "e839ad3404a1c1116cdb1a5fbdde7eeeef3e45d110736468c7bfe2f516bd6613",
+  "zs_eval.py": "d546996c3a74dc6d2a4c6394179f7107447ce25d38cf95b8f2705c67ed064ff9",
+  "policy_loss.py": "a3c36419a78dfd7a64a493c4d1effb8589adb2f38c822ffc68aa1f75a7621b96",
+  "batch_rollout.py": "81ab99e435851ec0afdd4f5130d56934131e25f37b5a1123ad20174f4de2055a",
+  "train_mb.py": "a2afe10394b9eb399bdd3c21afbf2f0ae050571eea83d684baa8f98f7cee961b",
+  "algo_v2.py": "98b8f0581fd3322cd58f92c2f9f52a49576ab5f8981edc9e1decdd78d5ff0dff",
+  "records_v2.py": "922fefba45b6ccf42439368ba6cb7a36a837229ef03c7c50c66cf3a39a16f43d",
+  "cli_v2.py": "4060cad142d7baa862b5456baea951c63740c05d5a180c59211f027c86a44773",
+  "fast_conv.py": "2dd1da61190463e349c47fba75e2c28d7f4ce23e1e6786da79bbc03e954d8177",
+  "ddp_v2.py": "6e4d99c158bd29f95ca7aeff915a4e02b176849ce5c4e975062eaf407987e644",
+  "personal_match.py": "6ed86aaacdcf84f6db41e650127658062539b6f6842d4db9f23a7ae483de7eda",
+  "hazard_match.py": "1f24e0320577e888750596bd55dfda310a852d61974c56b490da7e55eda1970e"
+ },
+ "data": {
+  "render_version": [
+   "release_jsonl",
+   "gt_retrieved_drop"
+  ],
+  "rows": "${FC}/wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20_hca1_p2e/gt_retrieved_drop/train.jsonl",
+  "sha256": "59dec94ec670a51d035f0c1962bdc705538ab0697260f7ead8f3afd234f94742"
+ },
+ "models": {
+  "4b": {
+   "id": "Qwen/Qwen3.5-4B",
+   "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+  },
+  "9b": {
+   "id": "Qwen/Qwen3.5-9B",
+   "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+  }
+ },
+ "opsd": {
+  "default_hint_set": "main",
+  "hint_template_sha256": "7eb142ca5f92791b1abc1ac5f64a975a885f188cfe37cfc43206b9d2a0802cb5",
+  "lambda": 0.2,
+  "table_schema": "trainer_v2.teacher_table_v2",
+  "topk": 16
+ },
+ "prereg": "PREREG_EVAL_V1_RELEASE_WS",
+ "reward": {
+  "default_preset": "main",
+  "presets": {
+   "main": {
+    "citation_terms": true,
+    "false_alarm": true,
+    "unneeded_call": 0.0,
+    "personal_match": "soft",
+    "hazard_first": true,
+    "name": "main"
+   },
+   "P-3": {
+    "citation_terms": false,
+    "false_alarm": true,
+    "unneeded_call": 0.0,
+    "personal_match": "soft",
+    "hazard_first": true,
+    "name": "P-3"
+   },
+   "P-2b'": {
+    "citation_terms": true,
+    "false_alarm": false,
+    "unneeded_call": 0.0,
+    "personal_match": "soft",
+    "hazard_first": true,
+    "name": "P-2b'"
+   },
+   "dec-sym": {
+    "citation_terms": true,
+    "false_alarm": true,
+    "unneeded_call": -1.0,
+    "personal_match": "soft",
+    "hazard_first": true,
+    "name": "dec-sym"
+   },
+   "hf-off": {
+    "citation_terms": true,
+    "false_alarm": true,
+    "unneeded_call": 0.0,
+    "personal_match": "soft",
+    "hazard_first": false,
+    "name": "hf-off"
+   },
+   "v5.1": {
+    "citation_terms": true,
+    "false_alarm": true,
+    "unneeded_call": 0.0,
+    "personal_match": "soft",
+    "hazard_first": false,
+    "name": "v5.1"
+   },
+   "v5.0": {
+    "citation_terms": true,
+    "false_alarm": true,
+    "unneeded_call": 0.0,
+    "personal_match": "strict",
+    "hazard_first": false,
+    "name": "v5.0"
+   },
+   "vef05": {
+    "citation_terms": true,
+    "false_alarm": true,
+    "unneeded_call": 0.0,
+    "personal_match": "soft",
+    "hazard_first": true,
+    "name": "vef05",
+    "vef": "vef05"
+   },
+   "vef08": {
+    "citation_terms": true,
+    "false_alarm": true,
+    "unneeded_call": 0.0,
+    "personal_match": "soft",
+    "hazard_first": true,
+    "name": "vef08",
+    "vef": "vef08"
+   },
+   "vef2": {
+    "citation_terms": true,
+    "false_alarm": true,
+    "unneeded_call": 0.0,
+    "personal_match": "soft",
+    "hazard_first": true,
+    "name": "vef2",
+    "vef": "vef2"
+   },
+   "v52miss": {
+    "citation_terms": true,
+    "false_alarm": true,
+    "unneeded_call": 0.0,
+    "missed_call": -2.0,
+    "personal_match": "soft",
+    "hazard_first": true,
+    "name": "v52miss"
+   },
+   "v52ws_ag": {
+    "citation_terms": true,
+    "false_alarm": true,
+    "unneeded_call": -0.5,
+    "missed_call": -2.0,
+    "withhold_match": true,
+    "personal_match": "soft",
+    "hazard_first": true,
+    "name": "v52ws_ag"
+   }
+  },
+  "r": {
+   "status": "plumbing value; R24/R25 calibration (WP-T4) pending",
+   "value": 0.1
+  },
+  "version": {
+   "call": "reward_v5.2-vcm-call",
+   "passive": "reward_v5.2-vcm-passive"
+  }
+ },
+ "seed": 0,
+ "status": "draft warm-start release pin from PREREG_RELEASE_MAIN_TRAIN_DEV_v20_hca1_p2e_gt_retrieved_drop.json; orchestrator approval required",
+ "ws": {
+  "init_lora": "${JOB}/forced_train_v1/runs/forced_p1_4b_s0/checkpoints/step_000125/lora",
+  "adapter_sha256": "cd807c90201add0947dcc1f543668769537fd7d56527e95ad6e7b6b8eafaabd4",
+  "source_complete": "step=125",
+  "arms": {
+   "DAPO_ws": "main",
+   "DAPO_ws_miss": "v52miss"
+  },
+  "protocol": "fresh run (step 0, fresh optimizer / scheduler, RNG from SEED) from this LoRA; memory_call arm"
+ }
+}

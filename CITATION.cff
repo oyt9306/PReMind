@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use PReMind or PReMind-Bench, please cite the paper."
+title: "PReMind: When Personal Memory Meets Visual Hazards"
+type: software
+version: 1.0.0
+license: Apache-2.0
+repository-code: "https://github.com/oyt9306/PReMind"
+authors:
+  - family-names: "Oh"
+    given-names: "Yeongtak"
+  - family-names: "Lee"
+    given-names: "Donghyeok"
+  - family-names: "Oh"
+    given-names: "Joonhee"
+  - family-names: "Jeong"
+    given-names: "Jaewon"
+  - family-names: "Yoon"
+    given-names: "Sungroh"
+preferred-citation:
+  type: article
+  title: "PReMind: When Personal Memory Meets Visual Hazards"
+  year: 2026
+  authors:
+    - family-names: "Oh"
+      given-names: "Yeongtak"
+    - family-names: "Lee"
+      given-names: "Donghyeok"
+    - family-names: "Oh"
+      given-names: "Joonhee"
+    - family-names: "Jeong"
+      given-names: "Jaewon"
+    - family-names: "Yoon"
+      given-names: "Sungroh"

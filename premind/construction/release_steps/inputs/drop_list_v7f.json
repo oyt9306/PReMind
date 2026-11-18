@@ -1,0 +1,26 @@
+{
+ "decision": "owner 2026-10-05 17:4x (exclude all 18 audit rows)",
+ "source": "memory_need_audit_v7e_20261005/priority_rows.csv",
+ "dropped_memory_need_ambiguous": [
+  "harmonize_v1_panic:family:s2h0052:G1_panic_memory",
+  "harmonize_v1_panic:family:s2h0103:G1_panic_memory",
+  "harmonize_v1_panic:family:s2t0032:G1_panic_memory",
+  "harmonize_v1_panic:family:s2t0166:G1_panic_memory",
+  "harmonize_v1_panic:family:s2t0174:G1_panic_memory",
+  "harmonize_v1_panic:family:s2t0258:G1_panic_memory",
+  "harmonize_v1_panic:family:s2t0281:G1_panic_memory",
+  "harmonize_v1_panic:family:s2t0308:G1_panic_memory",
+  "harmonize_v1_panic:family:s2t0350:G1_panic_memory",
+  "s2v9_vcm_holdout_v1:family:s2h0262:G0_closed",
+  "s2v9_vcm_holdout_v1:family:s2h0313:G0_closed",
+  "s2v9_vcm_prod_v1:family:s2t0024:G0_closed",
+  "s2v9_vcm_prod_v1:family:s2t0066:G0_closed",
+  "s2v9_vcm_prod_v1:family:s2t0116:G1_panic_memory",
+  "s2v9_vcm_prod_v1:family:s2t0208:G1_panic_memory",
+  "s2v9_vcm_prod_v1:family:s2t0316:G0_closed",
+  "s2v9_vcm_prod_v1:family:s2t0400:G0_closed",
+  "s2v9_vcm_prod_v1:family:s2t0423:G0_closed"
+ ],
+ "n_dropped": 18,
+ "rule": "G0 / implicit-request rows on the same image with an undecidable Stage-1 memory need"
+}

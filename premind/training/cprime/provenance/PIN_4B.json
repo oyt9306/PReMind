@@ -1,0 +1,880 @@
+{
+  "version": "p2e_mie_v1 (Phase II-quadruple-prime = p2d + move-required conflict rows, MIE hazard gate, original stillpen -0.2, natural conflict share, G0 stream 0.02, original -1r unneeded call, 50 steps)",
+  "argv": [
+    "--release",
+    "${FC}/wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20_hca1_p2e",
+    "--mode",
+    "gt_retrieved_drop",
+    "--arm",
+    "memory_call",
+    "--model",
+    "4b",
+    "--steps",
+    "200",
+    "--prompts-per-step",
+    "2",
+    "--num-generations",
+    "8",
+    "--r",
+    "0.1",
+    "--reward-preset",
+    "v4wh_g",
+    "--checkpoint-every",
+    "5",
+    "--dev-every",
+    "25",
+    "--dev-limit",
+    "200",
+    "--seed",
+    "0",
+    "--wandb-project",
+    "EAPMA",
+    "--wandb-group",
+    "factpc_p2",
+    "--algo",
+    "dapo",
+    "--updates-per-batch",
+    "2",
+    "--lora-r",
+    "32",
+    "--target-absent-share",
+    "0.20",
+    "--kl-beta",
+    "0.02",
+    "--aux-ratio",
+    "0",
+    "--monitor-frac",
+    "0",
+    "--out",
+    "${JOB}/forced_p2_factpc_v1/runs/factpc_p2_4b_s0",
+    "--batch-rollout",
+    "--gen-batch",
+    "16",
+    "--hard-stop",
+    "--stop-rule",
+    "confirmed",
+    "--monitor-window",
+    "20",
+    "--stop-warmup",
+    "50",
+    "--hazard-backend",
+    "judge",
+    "--hazard-judge-provider",
+    "api",
+    "--hazard-judge-model",
+    "gpt-6-luna@medium",
+    "--hazard-usd-cap",
+    "0.80",
+    "--hazard-token-cap",
+    "10000000",
+    "--hazard-judge-concurrency",
+    "8",
+    "--hazard-judge-timeout",
+    "30",
+    "--hazard-key-actions",
+    "${JOB}/forced_train_v1/inputs/TRAIN_KEY_ACTIONS_P2E_v1_gtclean.jsonl",
+    "--log-rollout-texts",
+    "--rollout-text-frac",
+    "0.05",
+    "--prereg",
+    "${JOB}/forced_p2_factpc_v1/pkg_factpc_p2/PREREG_RELEASE_WS_P2E_v1_s125.json",
+    "--acute-absent-clarify",
+    "accept",
+    "--absent-visible-risk",
+    "on",
+    "--warning-credit",
+    "judge",
+    "--warning-usd-cap",
+    "0.25",
+    "--curriculum",
+    "v22",
+    "--replay-budget",
+    "80",
+    "--safe-min-frac",
+    "0.30",
+    "--acute-memory-bonus",
+    "on",
+    "--false-alarm-pen",
+    "fa25",
+    "--recall-decision",
+    "ws52u1",
+    "--crowdout-guard",
+    "credit_gate",
+    "--abl-stop-at-step",
+    "25",
+    "--init-lora",
+    "${PHASE1_RUN}/checkpoints/step_000125/lora"
+  ],
+  "original_args": "${FC}/v4_build/g0_redesign_v1/rebuild_v20/CUR22S_4b_ARGS.json",
+  "original_args_sha256": "fa3264afaaad168f0ca4d686b47dd4b46052a2aa486d050237bd811e6642f098",
+  "argv_diff_vs_original": {
+    "--abl-stop-at-step": [
+      "150",
+      "25"
+    ],
+    "--checkpoint-every": [
+      "25",
+      "5"
+    ],
+    "--dev-every": [
+      "50",
+      "25"
+    ],
+    "--hazard-key-actions": [
+      "${FC}/v4_build/g0_redesign_v1/rebuild_v20/TRAIN_KEY_ACTIONS_v20.jsonl",
+      "${JOB}/forced_train_v1/inputs/TRAIN_KEY_ACTIONS_P2E_v1_gtclean.jsonl"
+    ],
+    "--hazard-usd-cap": [
+      "5",
+      "0.80"
+    ],
+    "--init-lora": [
+      null,
+      "${PHASE1_RUN}/checkpoints/step_000125/lora"
+    ],
+    "--out": [
+      "${FC}/eval_v1/runs/single_v4qS_cur22s_v20_4b_AG",
+      "${JOB}/forced_p2_factpc_v1/runs/factpc_p2_4b_s0"
+    ],
+    "--prereg": [
+      "${FC}/v4_build/g0_redesign_v1/rebuild_v20/PREREG_RELEASE_MAIN_TRAIN_DEV_v20_gt_retrieved_drop.json",
+      "${JOB}/forced_p2_factpc_v1/pkg_factpc_p2/PREREG_RELEASE_WS_P2E_v1_s125.json"
+    ],
+    "--release": [
+      "${FC}/wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20",
+      "${FC}/wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20_hca1_p2e"
+    ],
+    "--wandb-group": [
+      "v4h",
+      "factpc_p2"
+    ],
+    "--warning-usd-cap": [
+      "3",
+      "0.25"
+    ]
+  },
+  "base_recipe": {
+    "prereg": "PREREG_TRAINER_V2_V4HCUR22S",
+    "code_sha256": {
+      "covip_aux.py": "f8bc11cfe3e07a027bc2a6f8b04befd6d884224f76f0b52c74731c8e3ddba6a3",
+      "kl_ref.py": "99773568a2b9f75984dcf966560ac9f31b8be064bf4d7f48656e88905809e390",
+      "mix.py": "dd1d9c915f2a8caef43dcc301693aead33d5998b2ada7ada3fb215247586c58d",
+      "patch.py": "94c4628822e2f922bb0a9d46fc124fb6142c90f1ce9a40e685ed3c6e7e8599ed",
+      "reward_v4.py": "fecda868a819d76d17580de66085e54c922fe50ef5a27ba637dee3b5fb340410",
+      "main_v4.py": "94ec48bd71ca77e2913169c82f5694cc8aad511c8ecd74a7c600e225201a315a",
+      "pins_v4.py": "02592e380a435636837355a0f2ab1ca2c9d55bd057152e3c196d28ee58d40c74",
+      "monitor_slice.py": "415ed3c6c43625f2d1baa2e9fd0f4df88e4b1043e392f006eb9983e350b9f954"
+    },
+    "constants": {
+      "reward_preset": "v4wh_g",
+      "arm": "memory_call",
+      "steps": 200,
+      "prompts_per_step": 2,
+      "kl_beta": 0.02,
+      "kl_estimator": "k3",
+      "aux_ratio": 0.0,
+      "aux_methods": "multi_vision",
+      "aux_prompts_per_step": 0,
+      "monitor_frac": 0.0,
+      "monitor_seed": 0
+    },
+    "v4h": {
+      "code_sha256": {
+        "hazard_rubric.py": "a37aa444ac538b5e0f6f05885b112cc1337404e4efba566766b4e10aa47cedef",
+        "key_actions_v4h.py": "54468c50a6b6cb68b6a43f80fde13dc8504746decdb7222f2dc5d5942b69d8fe",
+        "hazard_cue.py": "b9c0fc05041b21a8de71561d335956ec9287367e84fd7763761707c4bf83a5ed",
+        "reward_v4h.py": "d9ac7515b05462b97c0ccf58a48e5944a4ea45db0c548be61f012c25b1a33d35",
+        "reward_v4hg.py": "cdad9de16d0982e7a366df9c141625b6947243216022a593d24daff0e756527a",
+        "hazard_judge.py": "d388527552378d55cb8b8dcd56ece1337b475d42070c491a000c51be79048bef",
+        "hazard_judge_api.py": "c289c63ef407388d540aeb8ce9818be20250936c0d251fcad44b1a60cfb94d86",
+        "hazard_monitor.py": "6bf45df57f54c4654e891f2db0a5bdb2a26ae69a9a425e079d9d68dca536920f",
+        "patch_h.py": "a531088a02b6bb227e9c4c3703e86c3542271e3dcf61dd469de14f1e557ff4ce",
+        "main_v4h.py": "de75f50453cd0e2347f7e03e8015d9c751945cae4b5300e00b96989696641a5f",
+        "pins_v4h.py": "39fca96241c1f9a390408f63894c3e6e29d29e4fc7d41ffeb60061540fe62d79"
+      },
+      "guard_sha256": "ad38a7a2425ea7a95b998e1aec7179eb7b19da0a4b7c1deab16645164fdcc86d",
+      "rubric_sha256": "4164ec74c49ef00b24a0aa1813252633e19645e63a47549fffafd0debbf849c6",
+      "eval_rubric_sha256": "622762061f7d69f17ee47cb4449aea4dfb98a7803c97ffd20d56a6f0b5b3c611",
+      "shared_sha256": {
+        "lexicon.py": "b8fe5d499b0ad9e8f2208b367d78d0d6d8b574889f8fa1149adde9e73d56ab05",
+        "cue_fallback.py": "276c02418242ee5a81aad0ee6de4fbe21958c3c3941602509e506c4017b5233f",
+        "key_actions.py": "1d528a949b5f4efebbc5732d4a0dd9c343af3db37ea3f76be86a76e767031172",
+        "ha_common.py": "66d332dd02f98c75c02582a2222ffa302401367c22945af639c7937610ad9fc3"
+      },
+      "key_actions": "${FC}/v4_build/g0_redesign_v1/rebuild_v20/TRAIN_KEY_ACTIONS_v20.jsonl",
+      "key_actions_sha256": "00426373a7e6df64c7a902807fdd015c85f03ca2d6683f3859ae795962cbe2da",
+      "release": "${FC}/wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20",
+      "release_pin": "${FC}/v4_build/g0_redesign_v1/rebuild_v20/PREREG_RELEASE_MAIN_TRAIN_DEV_v20_gt_retrieved_drop.json",
+      "release_pin_sha256": "b29d64c72613d78246e05b6abbe464c36620e027b0e6bd4a21c367fc6401535d",
+      "config": {
+        "base": "v4",
+        "hazard_backend": "judge",
+        "hazard_judge_provider": "api",
+        "hazard_judge_model": "gpt-6-luna@medium",
+        "hazard_usd_cap": 5.0,
+        "hazard_token_cap": 10000000,
+        "hazard_judge_concurrency": 8,
+        "hazard_judge_timeout": 30.0,
+        "hazard_monitor": false,
+        "log_rollout_texts": true,
+        "rollout_text_frac": 0.05
+      }
+    },
+    "aa": {
+      "code_sha256": {
+        "acute_absent_fix.py": "d688f8bba27d9be5e3712eb682c51de31180904638a651d4600b0cdcaea495a1",
+        "absent_visible_risk.py": "edc23e946df9e2e6f658df265d6d4d705cd5f066d3b58d15f1bcdd3afefa9064",
+        "warning_credit.py": "cdfad7cdfb4506262199c528eb75555c783979fc817d50f8f110feee628ec85e",
+        "warning_reward.py": "6d368f6bc7b43972a679a0e4135cc94a9b709316d9fe87968a9df5876b9addb2",
+        "main_v4haa.py": "45313066ce09316cfd8446658ece5e5acf8be4798d3517fdce47ee5602386813",
+        "pins_v4haa.py": "63d15c03806c451d3d01a4b38027e0d1612311ea4b577cff4417e7da6c546bce"
+      },
+      "config": {
+        "acute_absent_clarify": "accept",
+        "absent_visible_risk": "on",
+        "warning_credit": "judge"
+      },
+      "target_absent_share": "0.20",
+      "acute_absent": "keep",
+      "action_weight": 0.08,
+      "criterion": {
+        "acute_absent_clarify": "gt_absent & withhold target & image-acute & clarify & v4h.state == specific & not contraindicated -> action = W[action]",
+        "absent_visible_risk": "gt_absent & risk group masked (missing fact) & image severity minor|acute or evidence -> risk / false_alarm / missed_warning scored as reward_v5._terms"
+      },
+      "warning": {
+        "mode": "judge",
+        "backend": "judge",
+        "fallback": "cue",
+        "model": "gpt-6-luna@medium",
+        "usd_cap": 3.0,
+        "max_judge_calls_per_step": 32,
+        "step_budget_s": 60.0,
+        "judge_version": "wd_judge_v2",
+        "rubric_sha256": "c7ad17ee5f1e3966872ff5d8261e7627c8fb5fa85488aaa46dbe138e300c27d0",
+        "wd_sha256": {
+          "warning_detector.py": "cfc81716f5993996c736c12cc15ea1ed2ef950620a88da7d0229f6bd1563a5a8",
+          "wd_cue.py": "47ae36d9ea90ecaa4864b6f5133917f2e0a4dfd00b8d6b7a74e27225c189f3ae",
+          "wd_judge.py": "2ab0673eb9db786ec5dc725bfbbd99d787e9e4d7a597af9e7094ea1f14dad5f5",
+          "wd_reference.py": "79dc4d5bfd4d409a558ad78c7725629750856ce6f46eb673578f6ee279056d58"
+        },
+        "refs_sha256": {
+          "train.jsonl": "4ad27d32e9107ee4c5d0b8a0a03544c587cb2d39c7966400d94049e516f088bc",
+          "dev.jsonl": "a49ebe64660dab2eb13c439dd3ef45b671f0258abaf2539cbc0f339c9e436dec"
+        }
+      }
+    },
+    "cur": {
+      "code_sha256": {
+        "curriculum_v1.py": "375802413069cabe74dbc40f8c2a1b0b7ae62f34dbeaa2151ee595859f699516",
+        "curriculum_v2.py": "bdca3312b215be41be79af774d87171dc1824881b7819b132ef7cd179193c811",
+        "curriculum_v2_1.py": "4c8eff60eecdcd4437739d216d340f797013220a8d3af3d08a078890184d8dc3",
+        "curriculum_v2_2.py": "7eaca8d45eef71016fe09b0ea5d0a7e25f617f1b8005c09ebf31279f76f2ffd4",
+        "main_v4hcur.py": "7f8327ce9b08ac16a39bc5ce92315bdcd8295eb1abc19c5ebcbec9026ead719e",
+        "main_v4hcur21.py": "fa27c9106fc4fdee6229421ce73ee9fabcbf55754ee7b05dbc3dffc128ce9a14",
+        "main_v4hcur22.py": "b4be950d25156ee4f4a68da21eb21a4e97fc88f5f014c1a437f5b19805d81324",
+        "pins_v4hcur22.py": "2b6ad2ab341fbb4656371e5c75039989be5863ba3ff36ac963f9bbcca63105a0"
+      },
+      "curriculum": "v22",
+      "schedule_sha256": "4e85f5e59b0922c9967884c66c4f5b72aa9e72bba40fb8b9893d581f7f0c5007",
+      "quotas": {
+        "n_slots": 800,
+        "absent_share": 0.2,
+        "n_absent_slots": 160,
+        "replay_budget": 55,
+        "acute_heavy": true,
+        "acute_heavy_frac": 0.35,
+        "unsafe_present_passes": 1,
+        "counts": {
+          "acute_present": 171,
+          "acute_absent": 151,
+          "unsafe_present": 89,
+          "unsafe_absent": 94,
+          "safe_present": 279,
+          "safe_absent": 196
+        },
+        "passes": {
+          "acute_present": 1,
+          "acute_absent": 1,
+          "unsafe_present": 1,
+          "unsafe_absent": 1,
+          "safe_present": null,
+          "safe_absent": null,
+          "replay": null
+        },
+        "slots": {
+          "acute_present": 171,
+          "acute_absent": 151,
+          "unsafe_present": 89,
+          "unsafe_absent": 94,
+          "safe_present": 174,
+          "safe_absent": 66,
+          "replay": 55
+        },
+        "safe_min_frac": 0.3,
+        "replay_budget_requested": 80,
+        "safe_min_moves": {
+          "from_replay": 25,
+          "from_unsafe_present": 0
+        }
+      },
+      "seed": 0,
+      "horizon_steps": 200,
+      "p_global": 4,
+      "n_slots": 800,
+      "requeue": {
+        "reason": "all_wrong",
+        "times": 1,
+        "min_delay_steps": 10,
+        "max_delay_steps": 30,
+        "not_requeued": [
+          "all_correct",
+          "uniform_mixed"
+        ],
+        "refill": "next scheduled items"
+      },
+      "min_gap_steps": 10,
+      "replay": {
+        "min_delay_steps": 10,
+        "max_delay_steps": 30,
+        "mastery": 0.75,
+        "max_visits": {
+          "acute": 3,
+          "non_acute": 1
+        },
+        "start_step": 10,
+        "budget": 55
+      },
+      "runtime": {
+        "acute_heavy_frac": 0.35,
+        "acute_repeat_cap": "replay_budget (replay + re-queue + fill repeats of acute rows)",
+        "replay": {
+          "min_delay_steps": 10,
+          "max_delay_steps": 30
+        },
+        "mastery": 0.75,
+        "max_visits": {
+          "acute": 3,
+          "non_acute": 1
+        },
+        "non_acute_cap": "max(non_acute, cycle-0 scheduled visits)",
+        "share_tol_draws": 2.0,
+        "share_denominator": "emitted draws net of refunds, all strata",
+        "continuation": "none (fill pool)",
+        "mastery_criterion": "v2.1 (withhold full; acute withhold rows: no wrong_concept/distractor penalty)",
+        "min_gap_steps": 10,
+        "stuck": {
+          "acute_zero_mastery_visits": 2,
+          "report": "suspect_rows.jsonl"
+        },
+        "image_suspects": {
+          "min_rows": 3,
+          "max_mean_mastery": 0.1,
+          "min_run_acute_mastery": 0.3,
+          "action": "log only"
+        },
+        "safe_min_frac": 0.3,
+        "replay_budget_requested": 80
+      },
+      "data": {
+        "release_train": "${FC}/wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20/gt_retrieved_drop/train.jsonl",
+        "release_train_sha256": "450e968946dd390f95a901ef41710e491a3253b92377d0ecf82c5126a69e93f2",
+        "key_actions_sha256": "00426373a7e6df64c7a902807fdd015c85f03ca2d6683f3859ae795962cbe2da",
+        "world": 2,
+        "prompts_per_rank": 2
+      }
+    },
+    "base_prereg": "PREREG_TRAINER_V2_V4HCUR22",
+    "amb": {
+      "code_sha256": {
+        "acute_memory_bonus.py": "27738b94c3ac02cf1aae7f430aef1e8df3b18ff65d998dbc9c2664315132e74b",
+        "acute_memory_bonus_v1_1.py": "de788ca3bb03cd2b4d35877338e69fec11090d558bc19ad5f7159371f2cf4edd",
+        "false_alarm_pen.py": "7cc7ac74fb6a3e5c43ac7002f6ca21329f5d71620b3d1b489bfe0f2d0e6bbea9",
+        "main_v4hcurb.py": "aadcfbbaf4d1cdb467859bff29ed7aea80497041442b27460b66aaefeef85b83",
+        "main_v4hcur22b.py": "8f097c2dead2e108f5a61c816a19cbb790d28a1e8ff0fcd45487b058303c51e1",
+        "pins_v4hcur22b.py": "1dd774e9b23428f8bb72a80c1c04b818ddbea68c81585e24c47fc2882352d830"
+      },
+      "acute_memory_bonus": "on",
+      "version": "v1.1",
+      "bonus": 0.06,
+      "personal_content_weight": 0.12,
+      "criterion": "not degenerate & v4h.acute & condition gt_present & personal_content applicable & v4h.state == specific & not contraindicated & personal_content == W[personal_content] & >= 1 specific key-action label credited in the masked answer that is NOT matched by the memory-support sentence(s) (unmasked) or the support fact text -> + BONUS (component acute_memory)"
+    },
+    "fa": {
+      "false_alarm_pen": "fa25",
+      "value": -0.25,
+      "base": -0.15,
+      "applies_to": [
+        "reward_v5 tag false alarm",
+        "warning_credit effective risk",
+        "absent_visible_risk re-score"
+      ]
+    },
+    "s22_base_prereg": "PREREG_TRAINER_V2_V4HCUR22B",
+    "s22": {
+      "code_sha256": {
+        "main_v4hcur22s.py": "6ed1760a9722e760606dff9134360f59308c61eadb362eaf10f29c15ae4c3584",
+        "pins_v4hcur22s.py": "37bf76c8913d43e7cf47f7446e91ea761139edef5d02eb75fa97e466a2c32553",
+        "recall_decision.py": "4e49567945ca0703640a5a326f9fc17631af568da7295cde6c4acdf7c826c914",
+        "recall_decision_u1.py": "6e2d7fef280df1fbc12fb997ddb334cfbdedca32f9ad4635eabff912d293b9cb",
+        "abl_hooks.py": "8396a1e135dc4a56d727c765a951f65395816740751b9bf7cea4157719e40465",
+        "main_v4hcur23r.py": "60dc7af0990f10c91e2c1569ff3fb34b6b24695c175a031ba20df389499f61d8",
+        "scripts/v4hcur22s_single_plan.sh": "aa246d3b3364f1918814620be484209be0261fc5eba27016f9b81945e283a98d"
+      },
+      "recall": {
+        "recall_decision": "ws52u1",
+        "crowdout_guard": "credit_gate",
+        "weights": {
+          "correct": 1.0,
+          "missed_call": -2.0,
+          "unneeded_call": -1.0,
+          "invalid_not_required": -1.0,
+          "neutral": 0.0
+        },
+        "missed_call": -2.0,
+        "unneeded_call": -1.0,
+        "r": 0.1,
+        "source_preset": "v52ws_ag",
+        "guard_rule": "acute (v4h.acute) & branch called & decision credit > 0 (correct call on a memory-required row) & (hazard state not in {specific, generic_only} or contraindicated) -> decision = 0",
+        "version": "cur22r3_recall_ws52u1_v1",
+        "base_version": "cur23r_recall_v1",
+        "init_lora": null
+      },
+      "stop_at_step": 150
+    },
+    "g0_policy": {
+      "version": "g0_qa_active_ad_v1",
+      "neutral_decision_credit": 0.0,
+      "argv_sha256": "029a983afa666f4da8e665433b9e80366387a9a4e3f7f3ff3b69ae043986016d",
+      "active_weights": "unchanged ws52u1: correct +r, missed -2r, unneeded -r",
+      "policy_file": "${FC}/v4_build/g0_redesign_v1/rebuild_v20/G0_POLICY.jsonl",
+      "policy_sha256": "f74ab9a9fbf78acf4480b24edaae7b50e71509b3d5c47ab43999240c566eee6d",
+      "code_sha256": {
+        "g0_policy.py": "3d25722bfdc36b90d6251932860683bfafa89f5759156c140ec8e888c75895aa",
+        "metrics_ad.py": "ab86ce3f0a79bb63b38cc1839614aec1c1b1c3ea7301aa60f69b42674292335e",
+        "train_ad.py": "4608ad00468feaba2e98e8e54285b66e9479a67b7244931bc52f63f739149e6a",
+        "prepare.py": "50222c9cd882b6fbdfcaa3edfa09714e4aae994f2946519579da893ae007fb7c",
+        "launch_ad.py": "a959d31af14f21b65ce9eb6c56cee5009c598d6048516f14d9c69764fa9fb3c6"
+      },
+      "ae_code_sha256": {
+        "policy_ae.py": "0c9651e01018bfff05178a4bda212770bd60dc063061c8d9f23b7b1104bb04ce",
+        "qa_rules_v2.py": "c717c941be431ea8645457b467c6fa6d75d12b282d3bfd644ba8a4311d0611d0",
+        "balance_ae.py": "0d83d0e35aff1fcde25606737cd207ad8a75e98492ca282dfd9293e0d08b196a",
+        "prepare_ae.py": "0756b193592eb4786230a78fdd5746d070718500bd40e6984dc38e0f6a44432e",
+        "train_ae.py": "fb9b70714997322aec4f990a231f6570946c991ec7f879c656c3a363a4e35ac6",
+        "launch_ae.py": "47f8d08f87793c4f1af436cc0c05694b0b180311f3d5be58db73494051f86b62"
+      },
+      "qa_keys_sha256": "7caeca4641f925dd7132b9d6e2d602bd1201a849bfb415ec9f0903779bf77f35"
+    }
+  },
+  "frozen_source_sha256": {
+    "eval_v1/absent_sampler.py": "87f45062663eb8c3089b5b877d4d13103cdd4de2ec0d568ea48a58114cebc50c",
+    "eval_v1/acute_adequacy_v1.py": "d06c39c35b901e3df2e4712f39c7ee63dca6841ec0be8ecb304787bd6baef00a",
+    "eval_v1/analysis.py": "453b446014f33de07468256da0c8027be52bca4a4a8b7f2083e486f4ebf118c6",
+    "eval_v1/api_providers.py": "4538081e09ffa7a014f81bc59ea5a8deaf92d502f3fe0586a55169b71efb21f0",
+    "eval_v1/baselines.py": "de1cf83b513cebe2b8a83df742a1378b352974ff078ac75c28eb54ad73bbd618",
+    "eval_v1/ddp_main.py": "471e2f8eb6043da818181be0b05f563122073c27e47d9e6b9e3949e14b4184fa",
+    "eval_v1/evaluate.py": "161e0ae39dcfeb530be1a8410b05612f8d5631fd6ea6de268a9980cc1070011e",
+    "eval_v1/hazard_match.py": "d935e4173b246a22e3c1887f7641055a2bf2e044af07a0bcd60c224aefc9334a",
+    "eval_v1/main_run.py": "552a6304d44647dc412ad314f41e369e90af46fa7eba5abf86f8e2768f364936",
+    "eval_v1/release_data.py": "28f0d2e0916dfa3cdb2ff1113c093d528310b106efee1f21baf57b03756ac776",
+    "eval_v1/stop_rule.py": "da43d84b939b1509398d7ebeee9a6cfa0e546b0e8a4f2ed205e9559d46f52f94",
+    "eval_v1/timed_backend.py": "a17e22fecaac8d03106728f15218df79b2344efa510594830641a40989b09900",
+    "eval_v1/topk_context.py": "9240027dac5e3600ace75f3d21b911aa7b4ef3fc219054f4efe9c575fd70df09",
+    "eval_v1/wandb_layout.py": "1634c98ac0700db80333b9b1d8f029cb1ff18ebea065e572cc745ab6f9f9d134",
+    "eval_v1/wandb_run.py": "fee3bed144e9474ecdeea1cd32450b2eafb173be49328888fbac7347c059a1eb",
+    "resplit_v1/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "resplit_v1/config.py": "e1a19f8476976e4609a9372121be853c44def0e67c71aed112abafc340f4cbdb",
+    "resplit_v1/io_rows.py": "7daf65b53731851b7082f4fede60ff470e77adbecbb97bb7bb75288feb98a418",
+    "train_interface_v1/adapter.py": "768fd20931e1ee19b7326c4fba966327ad1fcd65d58ab4d8b334c4de7336dd6b",
+    "train_interface_v1/final_prompts.py": "ac58db39f2848ff7579ca11a962d9d408bafd5235daa499d09e38b43c3fd76d0",
+    "train_interface_v1/render.py": "ea1de20b8f5a937b963fcda80aa28b705873300926d2935b98638b5b557e2076",
+    "trainer_v2/__init__.py": "967b4583e34c1c3d86e11e22d22012361e9214eee3e3b7195bcd5942186f7d43",
+    "trainer_v2/algo_v2.py": "98b8f0581fd3322cd58f92c2f9f52a49576ab5f8981edc9e1decdd78d5ff0dff",
+    "trainer_v2/batch_rollout.py": "81ab99e435851ec0afdd4f5130d56934131e25f37b5a1123ad20174f4de2055a",
+    "trainer_v2/cli_v2.py": "4060cad142d7baa862b5456baea951c63740c05d5a180c59211f027c86a44773",
+    "trainer_v2/ddp_v2.py": "6e4d99c158bd29f95ca7aeff915a4e02b176849ce5c4e975062eaf407987e644",
+    "trainer_v2/grpo_v2.py": "86acc4e9a383b3b5defecbf0192a2709e0bfe984e9f066fc7041979b831d5a3e",
+    "trainer_v2/hazard_match.py": "1f24e0320577e888750596bd55dfda310a852d61974c56b490da7e55eda1970e",
+    "trainer_v2/hf_backend.py": "495ca0280e09f1651187e90efd1c67d68e46a2fb308209cbeed76bb7c7ed4057",
+    "trainer_v2/metrics_v9.py": "67cf037598b3075f7882c20c27e1d950dd46f69d540f3d2ada768c40c8048b5d",
+    "trainer_v2/opsd.py": "73e693f4d4fad4a59bd1fd2804cf300a0170c435becdd6f946cb9b8ddb56116b",
+    "trainer_v2/paths_v2.py": "3b8082b67e7740c58f2750d57eb8f8ad908aa0b8566e85c418853507b907dfe7",
+    "trainer_v2/personal_match.py": "6ed86aaacdcf84f6db41e650127658062539b6f6842d4db9f23a7ae483de7eda",
+    "trainer_v2/pins.py": "03192c8d9d5eda58406a98672d68290016553e4c86f0564bd036d3d71dba1c69",
+    "trainer_v2/policy_loss.py": "a3c36419a78dfd7a64a493c4d1effb8589adb2f38c822ffc68aa1f75a7621b96",
+    "trainer_v2/records_v2.py": "922fefba45b6ccf42439368ba6cb7a36a837229ef03c7c50c66cf3a39a16f43d",
+    "trainer_v2/reward_v5.py": "8cc629ca559f94343395f9b99946ebfabcdc48c05244a6f9c2741b71566f6a7b",
+    "trainer_v2/run_v2.py": "6b4229b3258e024db8b39c3e750fbe4bcdc015a96900bad94724ec052c22826c",
+    "trainer_v2/vcm_data.py": "f1b0f27d51e150b73e7dad7bcaabe5745184ed41c3aabe22cacd147f352458bd",
+    "trainer_v2/vef.py": "9726bffcd339ab500cc1038c2b895cedfa267424069c625416e22dd32e76381b",
+    "trainer_v2/vef2.py": "dd63f46237e2e937a73cc171c3cb864d73b2640d81dff250d98d7f1da11c80e3",
+    "trainer_v2/vef_judge.py": "7d9acb21d31205a7eda3f46c47af2b90297d02960c17a456274a75597bdc1f88",
+    "trainer_v2/withhold_v9.py": "982a4f24a0e628008fe89ca57e345ee019821d6b54a3df9bb49e62154f78632b",
+    "trainer_v2_v4/__init__.py": "fb61cf4fec26d0cbcc42fd17298e453caf1195b52f5990e2c3578fc0ff81509c",
+    "trainer_v2_v4/abl_hooks.py": "8396a1e135dc4a56d727c765a951f65395816740751b9bf7cea4157719e40465",
+    "trainer_v2_v4/absent_visible_risk.py": "edc23e946df9e2e6f658df265d6d4d705cd5f066d3b58d15f1bcdd3afefa9064",
+    "trainer_v2_v4/acute_absent_fix.py": "d688f8bba27d9be5e3712eb682c51de31180904638a651d4600b0cdcaea495a1",
+    "trainer_v2_v4/acute_memory_bonus.py": "27738b94c3ac02cf1aae7f430aef1e8df3b18ff65d998dbc9c2664315132e74b",
+    "trainer_v2_v4/acute_memory_bonus_v1_1.py": "de788ca3bb03cd2b4d35877338e69fec11090d558bc19ad5f7159371f2cf4edd",
+    "trainer_v2_v4/covip_aux.py": "f8bc11cfe3e07a027bc2a6f8b04befd6d884224f76f0b52c74731c8e3ddba6a3",
+    "trainer_v2_v4/curriculum_v1.py": "375802413069cabe74dbc40f8c2a1b0b7ae62f34dbeaa2151ee595859f699516",
+    "trainer_v2_v4/curriculum_v2.py": "bdca3312b215be41be79af774d87171dc1824881b7819b132ef7cd179193c811",
+    "trainer_v2_v4/curriculum_v2_1.py": "4c8eff60eecdcd4437739d216d340f797013220a8d3af3d08a078890184d8dc3",
+    "trainer_v2_v4/curriculum_v2_2.py": "7eaca8d45eef71016fe09b0ea5d0a7e25f617f1b8005c09ebf31279f76f2ffd4",
+    "trainer_v2_v4/false_alarm_pen.py": "7cc7ac74fb6a3e5c43ac7002f6ca21329f5d71620b3d1b489bfe0f2d0e6bbea9",
+    "trainer_v2_v4/hazard_cue.py": "b9c0fc05041b21a8de71561d335956ec9287367e84fd7763761707c4bf83a5ed",
+    "trainer_v2_v4/hazard_judge.py": "d388527552378d55cb8b8dcd56ece1337b475d42070c491a000c51be79048bef",
+    "trainer_v2_v4/hazard_judge_api.py": "c289c63ef407388d540aeb8ce9818be20250936c0d251fcad44b1a60cfb94d86",
+    "trainer_v2_v4/hazard_monitor.py": "6bf45df57f54c4654e891f2db0a5bdb2a26ae69a9a425e079d9d68dca536920f",
+    "trainer_v2_v4/hazard_rubric.py": "a37aa444ac538b5e0f6f05885b112cc1337404e4efba566766b4e10aa47cedef",
+    "trainer_v2_v4/key_actions_v4h.py": "54468c50a6b6cb68b6a43f80fde13dc8504746decdb7222f2dc5d5942b69d8fe",
+    "trainer_v2_v4/kl_ref.py": "99773568a2b9f75984dcf966560ac9f31b8be064bf4d7f48656e88905809e390",
+    "trainer_v2_v4/main_v4.py": "94ec48bd71ca77e2913169c82f5694cc8aad511c8ecd74a7c600e225201a315a",
+    "trainer_v2_v4/main_v4b.py": "50b69973363d48050a9976f3593586b420fa8c723b8baed94389e9acac8ec128",
+    "trainer_v2_v4/main_v4h.py": "de75f50453cd0e2347f7e03e8015d9c751945cae4b5300e00b96989696641a5f",
+    "trainer_v2_v4/main_v4haa.py": "45313066ce09316cfd8446658ece5e5acf8be4798d3517fdce47ee5602386813",
+    "trainer_v2_v4/main_v4hcur.py": "7f8327ce9b08ac16a39bc5ce92315bdcd8295eb1abc19c5ebcbec9026ead719e",
+    "trainer_v2_v4/main_v4hcur21.py": "fa27c9106fc4fdee6229421ce73ee9fabcbf55754ee7b05dbc3dffc128ce9a14",
+    "trainer_v2_v4/main_v4hcur22.py": "b4be950d25156ee4f4a68da21eb21a4e97fc88f5f014c1a437f5b19805d81324",
+    "trainer_v2_v4/main_v4hcur22b.py": "8f097c2dead2e108f5a61c816a19cbb790d28a1e8ff0fcd45487b058303c51e1",
+    "trainer_v2_v4/main_v4hcur22s.py": "6ed1760a9722e760606dff9134360f59308c61eadb362eaf10f29c15ae4c3584",
+    "trainer_v2_v4/main_v4hcur23r.py": "60dc7af0990f10c91e2c1569ff3fb34b6b24695c175a031ba20df389499f61d8",
+    "trainer_v2_v4/mix.py": "dd1d9c915f2a8caef43dcc301693aead33d5998b2ada7ada3fb215247586c58d",
+    "trainer_v2_v4/monitor_slice.py": "415ed3c6c43625f2d1baa2e9fd0f4df88e4b1043e392f006eb9983e350b9f954",
+    "trainer_v2_v4/patch.py": "94c4628822e2f922bb0a9d46fc124fb6142c90f1ce9a40e685ed3c6e7e8599ed",
+    "trainer_v2_v4/patch_h.py": "a531088a02b6bb227e9c4c3703e86c3542271e3dcf61dd469de14f1e557ff4ce",
+    "trainer_v2_v4/recall_decision.py": "4e49567945ca0703640a5a326f9fc17631af568da7295cde6c4acdf7c826c914",
+    "trainer_v2_v4/recall_decision_u1.py": "6e2d7fef280df1fbc12fb997ddb334cfbdedca32f9ad4635eabff912d293b9cb",
+    "trainer_v2_v4/reward_v4.py": "fecda868a819d76d17580de66085e54c922fe50ef5a27ba637dee3b5fb340410",
+    "trainer_v2_v4/reward_v4h.py": "d9ac7515b05462b97c0ccf58a48e5944a4ea45db0c548be61f012c25b1a33d35",
+    "trainer_v2_v4/reward_v4hg.py": "cdad9de16d0982e7a366df9c141625b6947243216022a593d24daff0e756527a",
+    "trainer_v2_v4/warning_credit.py": "cdfad7cdfb4506262199c528eb75555c783979fc817d50f8f110feee628ec85e",
+    "trainer_v2_v4/warning_reward.py": "6d368f6bc7b43972a679a0e4135cc94a9b709316d9fe87968a9df5876b9addb2",
+    "v4_build/g0_redesign_v1/rebuild_codex/build.py": "c80bb3ba9d29a165efe7342c904e59ea44fe7280a923c20ccf8abaf14fe76f11",
+    "v4_build/g0_redesign_v1/rebuild_codex/g0_policy.py": "3d25722bfdc36b90d6251932860683bfafa89f5759156c140ec8e888c75895aa",
+    "v4_build/g0_redesign_v1/rebuild_codex/metrics_ad.py": "ab86ce3f0a79bb63b38cc1839614aec1c1b1c3ea7301aa60f69b42674292335e",
+    "v4_build/g0_redesign_v1/rebuild_codex/prepare.py": "50222c9cd882b6fbdfcaa3edfa09714e4aae994f2946519579da893ae007fb7c",
+    "v4_build/g0_redesign_v1/rebuild_v17_codex_r2/qa_rules.py": "1401d760ccec604fc4017096cda07548df2fbede1d4edd53617956c7b33b8623",
+    "v4_build/g0_redesign_v1/rebuild_v20/balance_ae.py": "0d83d0e35aff1fcde25606737cd207ad8a75e98492ca282dfd9293e0d08b196a",
+    "v4_build/g0_redesign_v1/rebuild_v20/policy_ae.py": "0c9651e01018bfff05178a4bda212770bd60dc063061c8d9f23b7b1104bb04ce",
+    "v4_build/g0_redesign_v1/rebuild_v20/prepare_ae.py": "0756b193592eb4786230a78fdd5746d070718500bd40e6984dc38e0f6a44432e",
+    "v4_build/g0_redesign_v1/rebuild_v20/qa_rules_v2.py": "c717c941be431ea8645457b467c6fa6d75d12b282d3bfd644ba8a4311d0611d0",
+    "v4_build/hazard_appropriate/ha_common.py": "66d332dd02f98c75c02582a2222ffa302401367c22945af639c7937610ad9fc3",
+    "v4_build/hazard_appropriate/key_actions.py": "1d528a949b5f4efebbc5732d4a0dd9c343af3db37ea3f76be86a76e767031172",
+    "v4_build/hazard_appropriate/lexicon.py": "b8fe5d499b0ad9e8f2208b367d78d0d6d8b574889f8fa1149adde9e73d56ab05",
+    "v4_build/hazard_map.py": "f19d781d605049925a34a70ec67760a21ae09ec402172b0c2c9071fac5e0e130",
+    "v4_build/mie_metric/mie_v1.py": "83ef97f4643bcd542dd5d83a646490de59097d540765b13a71c36fa76801aea0",
+    "v4_build/paper_split_fig/make_split_figure_v1.py": "e9a6187bf4cea574e027866b2e5b1b255817d6832d9ce88a35ac8ab87f8b8785",
+    "v4_build/warning_judge/warning_detector.py": "cfc81716f5993996c736c12cc15ea1ed2ef950620a88da7d0229f6bd1563a5a8",
+    "v4_build/warning_judge/wd_cue.py": "47ae36d9ea90ecaa4864b6f5133917f2e0a4dfd00b8d6b7a74e27225c189f3ae",
+    "v4_build/warning_judge/wd_judge.py": "2ab0673eb9db786ec5dc725bfbbd99d787e9e4d7a597af9e7094ea1f14dad5f5",
+    "v4_build/warning_judge/wd_reference.py": "79dc4d5bfd4d409a558ad78c7725629750856ce6f46eb673578f6ee279056d58"
+  },
+  "package_code_sha256": {
+    "advweight_p2e.py": "7969ef50f5af6232cc6bc7204f9a51718abf788c82fe1668e40dfee470339bb5",
+    "api_budget.py": "0b022b2fb0487692cfaa0d2c084b3439e0fe91ac8a1a2789bcbaf81c9d83f5a5",
+    "dev_hook_p2b.py": "4582e66de7789dbe4699b7cd2c634ca3acc0e94e6d3fd32f7feaefe571655c39",
+    "forced_mix.py": "c5288b522ef084071bae7071d04c2ae156ed2a86f546a93a8a7f04780a577942",
+    "mastery_p2d.py": "daf7100009a9bd3383e1cc5e064d69fd2af303c76423c712b4b1486cd2cdda03",
+    "mie_train.py": "8ac25dc09bc3b14e4d015ff0c60e5f504ce94fff07aafda377637f45b20ca4b3",
+    "monitor_p2c.py": "f4defc3461f17913e9f95570ea03294e0d36f9912168e979a5c936cde0a6d3e2",
+    "prepare_run.py": "1397f8ae750e13072678cc2df940b6c6f35fa5ecb44e2a5adceaf8f5a3c81ccc",
+    "sim_replay_scenarios.py": "da6b81c829efa5204df8c817edbb14b130112f7776de99a3ca6d52d00ca3c565",
+    "stillpen.py": "62a460342ad88e7e8de5cc9b261545355bef21151544046ec2644170dc125206",
+    "train_entry.py": "bd3c4d7e138b559be17197c0a239b311c80f2cfd46c32a3eb0a0325e013c6e09"
+  },
+  "warm_start": {
+    "lora": "${PHASE1_RUN}/checkpoints/step_000125/lora",
+    "adapter_sha256": "cd807c90201add0947dcc1f543668769537fd7d56527e95ad6e7b6b8eafaabd4",
+    "adapter_config_sha256": "b46fb1088a94911de1e55019c707bb40936eeb306602dd07311ced159a65a65e",
+    "complete": "step=125",
+    "optimizer": "fresh AdamW (ddp_main warm start)"
+  },
+  "ws_prereg_sha256": "c35e62ae9433b498e7da4f5abe869704f4c2ca0b9b5bb1aad4d7d0bcc7af0c49",
+  "key_actions_sha256": "f56adea9a9de4cde8ef6bebd3459dfc1fb3a9aca256f57bd185354adbd15bd26",
+  "release_train_sha256": "59dec94ec670a51d035f0c1962bdc705538ab0697260f7ead8f3afd234f94742",
+  "hca1": {
+    "base_prereg_sha256": "8f9bb45336085f6d32e962a917b5a52c958b843f144de7d859cff785c0c33ae1",
+    "release_manifest_sha256": "e21e61dfc261bcafeb7cd523f376c62dfcb772dea002a2fea9a8c7707ed3f310",
+    "files_sha256": {
+      "BUILD_REPORT_hca1.json": "db8b8955bb19af79d4b0062a785d0ca195f11ca2bbb1fc2780234a4a8ac074dc",
+      "INCLUDE_hca1.txt": "797290724c4ee52f4546b19cdb1178227d4129272de5b13e6f4dd378fac19ec3",
+      "KA_FIX_hca1b.json": "84681a0643d507240e4b04aa3a8f918dc16b0d300e173b098fdb61ed030220aa",
+      "NEW_KEY_ACTIONS_hca1.jsonl": "53dfec2d0c7937ad3356b5ab6d5f88f4d2560105a062c0c364cc7620ccd9dad3",
+      "NEW_ROWS_hca1.jsonl": "acdc964803a5045d4ec061c8f70057da34c40e708561e7fad97db3b2b2732c21",
+      "PREREG_RELEASE_MAIN_TRAIN_DEV_v20_hca1_gt_retrieved_drop.json": "19f54eabe80950c7b6087c410c08874d0df897228ef1d87d59c4a8b49bea8bb9",
+      "TRAIN_KEY_ACTIONS_v20_hca1.jsonl": "cc0d44ce0845d176cb7984ece481c9ff8a94be854e0962eccfd371de4534e833",
+      "TRAIN_KEY_ACTIONS_v20_hca1b.jsonl": "05b716549a76332bbec67814ddd79e8df8ab32bb2f6bd2bfae4b36fc1a0b1979",
+      "build_hca1.py": "4092038bb11f981acd2d3d27c6ed67b917adb9d18364ce86eedda09486fa5740",
+      "build_ka_b.py": "2ef87fc34c8c5661da0c6a006b7142b9682ecc0b29b0c3541c744de056563d85",
+      "build_release_hca1.py": "51e723b630c4c284bb7e8be48a1834d1b34e9f290d85a1172e2f1639e9b468f1",
+      "specs_hca1.py": "26155e0128fd9e2672456b7c5e0cf1dbbc2c8a9c228c403d529167f47217c7ac"
+    },
+    "plan": "hca1 rows outside the curriculum plan (stillpen.make_plan_class; schedule sha unchanged)"
+  },
+  "curriculum_state": {
+    "log": "${PHASE1_RUN}.curriculum/steps.jsonl",
+    "step": 124,
+    "cursor": 628,
+    "line_sha256": "3041ac3279c52d2a43a5a41b4576c21cb9f85d95d8747f4300364ca653179cbd",
+    "step_offset": 125
+  },
+  "penalty": {
+    "lambda": 0.2,
+    "still": "\\b(?:do not|don'?t|never)\\s+(?:try to\\s+)?(?:move|reposition|shift)\\s+(?:him|her|them|the (?:person|man|woman|child|boy|girl|patient|victim)|yourself)\\b|\\b(?:do not|don'?t)\\s+(?:try to\\s+)?(?:move|get up|stand up|sit up)\\b(?!\\s+(?:the|this|that|it|any|anything)\\b)|\\b(?:stay|keep (?:still|him still|her still|them still)|remain)\\s+(?:still|put|where (?:you|they|he|she) (?:are|is)|in place|lying down)\\b|\\bkeep (?:him|her|them|the person) (?:still|lying (?:down|still)|where (?:he|she|they) (?:is|are))\\b|\\bavoid moving (?:him|her|them|the person)\\b|\\b(?:don'?t|do not|never)\\s+(?:let|have|make|help|allow)\\s+(?:him|her|them|the person)\\s+(?:get up|stand|sit up|move)\\b|\\b(?:leave|keep|have)\\s+(?:him|her|them|the person)\\s+(?:where (?:he|she|they) (?:is|are)|on the (?:floor|ground)|lying(?: down)?|in (?:that|this|the same) position|as (?:he|she|they) (?:is|are))\\b|\\b(?:stay|remain)\\s+(?:lying|lying down|on the (?:floor|ground))\\b|\\bwait (?:for help )?before (?:moving|getting up)\\b|\\bkeep (?:him|her|them) from (?:moving|getting up)\\b",
+    "emerg": "911|\\bemergency (?:services|help|number|line)\\b|\\bambulance\\b|\\bparamedics?\\b|\\bpoison control\\b",
+    "flags": "IGNORECASE",
+    "terms": {
+      "p1": "acute & not stillness_supported & STILL",
+      "p2": "acute & emergency_contraindicated & EMERG",
+      "p3": "non-acute safe & (STILL | EMERG)",
+      "p4": "move_required (hca1) & STILL, additive to p1",
+      "p5": "stillness-supported acute & no STILL match, weight LAMBDA_P5"
+    },
+    "lambda_p5": 0.1,
+    "applied_to": "hazard_rubric.answer_text(stage2)",
+    "step_log_key": "stillpen"
+  },
+  "p2b_release": {
+    "dir": "${FC}/wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20_hca1_p2b",
+    "build_report_sha256": "bb4478597557486f6558cbb685cd18ba4fa4a781c355ab14f80aadf959e926f8",
+    "n_train": 1035,
+    "n_dev": 109,
+    "excluded_cdev_family_rows": 32,
+    "excluded_families": [
+      "family:ti1_07",
+      "family:ti1_09",
+      "family:ti2_13",
+      "family:ti2_18"
+    ],
+    "n_added_conflict": 63,
+    "builder_sha256": "b82227e2be22ca887a3e36641a138045c5ef47ff81f67530a49356ca3be2c74d"
+  },
+  "p2e_release": {
+    "dir": "${FC}/wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20_hca1_p2e",
+    "manifest_sha256": "e21e61dfc261bcafeb7cd523f376c62dfcb772dea002a2fea9a8c7707ed3f310",
+    "build_report_sha256": "4baaa172e9db412663ce3b87ce62b45c3db892a0ea3d95550f4bec6b2946b891",
+    "n_train": 1063,
+    "n_dev": 109,
+    "n_added_conflict_v2": 45,
+    "n_mie_inventory": 91,
+    "move_required_share_of_conflict": 0.494505,
+    "builder_sha256": "013432ff2af6ddbbc0716834033de24b18d5f4582c6cdf31a56e07b8c5ab659d",
+    "conflict_v2_builder_sha256": "3371f3a49cf09384cc2dfba7d8bccdafc9c95550ff2ca8d971cd1afc71865b85",
+    "conflict_v2_report_sha256": "640105797b7fedda3dd3239c1ef91edc2f9b10ccefd0a51dca11f4aea7e0aac3"
+  },
+  "mie": {
+    "w": 0.15,
+    "w_not_applied": 0.05,
+    "w_mentioned_only": 0.05,
+    "gate": true,
+    "gate_rule": "applied paid only if final ledger v4h state == specific OR contraindicated (else applied_ungated, 0)",
+    "module_defaults": [
+      0.0,
+      0.0,
+      0.0,
+      false
+    ],
+    "signs": {
+      "applied": 1.0,
+      "misapplied": -1.0,
+      "mentioned_only": 0.0,
+      "not_applied": 0.0,
+      "unjudged": 0.0
+    },
+    "inventory": "${FC}/v4_build/conflict_train_aug_v1/p2e_release/MIE_INVENTORY_TRAIN_P2E_v1.jsonl",
+    "inventory_sha256": "d5f250f930f2ef2dbcadfa7bb24f2624b955fb5337efd5fd11f16f46fbd11c04",
+    "usd_cap": 0.5,
+    "judge_input": "hazard_rubric.answer_text(stage2) only",
+    "install_order": "after stillpen.install()"
+  },
+  "dev_hook": {
+    "full_dev": "dev_eval/step_N (109 rows)",
+    "subset": "dev_eval_orig90/step_N (90 orig rows)",
+    "payload": "90 orig rows",
+    "mie": "dev_eval/step_N/mie.json (19 cdev rows)",
+    "cdev_inventory_sha256": "de0fee2861cc1ab9456be9125efbea27f6e852570dd9c5ace36fd677f9599d5f",
+    "usd_cap": 0.25,
+    "dev_every": "25",
+    "checkpoint_every": "5"
+  },
+  "streams": {
+    "mode": "p2e",
+    "p_given_non_hca1_position": {
+      "conflict": 0.41,
+      "g0": 0.02
+    },
+    "conflict_displaces": "present memory-required curriculum rows only",
+    "seed": "p2c_streams_v1|0",
+    "neutral_styles": [
+      "panic",
+      "calm"
+    ],
+    "pools": {
+      "conflict": "MIE inventory rows (blocked in the curriculum)",
+      "g0": "G0* rows, no key action, query_style not panic/calm (not blocked)"
+    },
+    "natural_conflict_share": 0.085607
+  },
+  "decision": {
+    "unneeded_call_x_r": -1.0,
+    "missed_call_x_r": -2.0,
+    "neutral_g0": 0.0,
+    "override": null,
+    "source": "trainer_v2_v4/recall_decision_u1 (ws52u1) unchanged = the original Phase II -1r (decision_p2c not installed)"
+  },
+  "monitors": {
+    "keys": [
+      "g0_n",
+      "g0_call",
+      "conf_judged",
+      "conf_mentioned_only",
+      "acute_n",
+      "acute_state_n",
+      "acute_generic_only",
+      "acute_stillpen"
+    ],
+    "step_key": "p2c_monitor",
+    "p2d_step_keys": [
+      "p2d_mastery",
+      "retention"
+    ],
+    "dev_retention": {
+      "reference_correct_withhold": 51.4,
+      "warn_drop": 8.0
+    }
+  },
+  "bands": {
+    "band1_steps": 15,
+    "band1_tiers": [
+      "core"
+    ],
+    "max_visits_by_tier": {
+      "core": 2,
+      "late": 1,
+      "learned": 1,
+      "drop": 0
+    },
+    "tiers_file": "${FC}/v4_build/conflict_train_aug_v1/p2e_release/DIFFICULTY_P2E_4b.json",
+    "tiers_sha256": "8343c38b9491350be77f500eb9fc15aadfc2fba96de2001f5256a013404bf757",
+    "counts": {
+      "late": 47,
+      "core": 35,
+      "drop": 9
+    },
+    "curation_tiers_sha256": "79eea7230f70a25a5333153dfee17cb8442dc962e694e77c9aca709525d7a196",
+    "profile_tool_sha256": "c33448f0a529045fdad80a8a7ba9851a2166cbc269bd05424e6f0e2374df43bc"
+  },
+  "advantage_weight": {
+    "core_first": 1.0,
+    "core_replay": 1.5,
+    "late": 0.5,
+    "other": 1.0,
+    "cap": 1.25,
+    "mechanism": "grpo_v2.grouped_advantages x per-row weight (as train_mie_p3_4b/replay_p3.install_weight); rewards unchanged"
+  },
+  "mastery": {
+    "mastery": 0.75,
+    "min_delay": 10,
+    "max_delay": 30,
+    "max_visits": 2,
+    "p_replay": 0.5,
+    "no_signal_temperature": 1.1,
+    "hot_cap_frac": 0.05,
+    "displace_pmr_only": true,
+    "seed": "p2d_mastery_v1|0",
+    "mirrors": "trainer_v2_v4/curriculum_v2.py MASTERY / REPLAY / MAX_VISITS acute",
+    "temperature": "grpo_v2.rollout temperature argument, separate call for HOT prompts (mastery_p2d.split_rollout)"
+  },
+  "boost": {
+    "mode": "p2e",
+    "restore": true,
+    "offset": 125,
+    "every": 4,
+    "pools": "all boost positions: hca1 rows; v20 acute row only if all 24 are gap-blocked (counted)",
+    "fallback": [
+      "acute"
+    ],
+    "balance": null,
+    "streams": {
+      "conflict": 0.41,
+      "g0": 0.02
+    },
+    "mastery": {
+      "mastery": 0.75,
+      "min_delay": 10,
+      "max_delay": 30,
+      "max_visits": 2,
+      "p_replay": 0.5,
+      "no_signal_temperature": 1.1,
+      "hot_cap_frac": 0.05,
+      "displace_pmr_only": true
+    },
+    "bands": {
+      "band1_steps": 15,
+      "band1_tiers": [
+        "core"
+      ],
+      "max_visits_by_tier": {
+        "core": 2,
+        "late": 1,
+        "learned": 1,
+        "drop": 0
+      }
+    },
+    "seed": "stillpen_boost_v1|0",
+    "order": "image round-robin per pool",
+    "curriculum_bookkeeping": "excluded (n/counts/last/observe/requeue)"
+  },
+  "hazard_first_gate": {
+    "rule": "stillpen.install_hf_gate: after the existing gate (specific & not contraindicated) the bonus needs a hazard-specific key-action cue in the first two answer sentences",
+    "excluded_labels": [
+      "call_emergency",
+      "dont_move_keep_still",
+      "keep_in_place"
+    ],
+    "v2_still_supported": "stillness-supported rows: dont_move_keep_still cues + STILL count; call_emergency never"
+  },
+  "layout": {
+    "world": 2,
+    "prompts_per_rank": 2,
+    "global_prompts_per_step": 4,
+    "gen_batch": 16,
+    "num_generations": 8,
+    "gpus": [
+      4,
+      5
+    ]
+  },
+  "owner_cap_usd": {
+    "total": 1.8,
+    "hazard": 0.8,
+    "warning": 0.25,
+    "mie": 0.5,
+    "mie_dev": 0.25
+  },
+  "forced_trial": {
+    "forced_mix_kwargs": "seed=0,p_present=0.40,p_absent=0.40,p_safe=0.50,w6=0.10,exclude_safe=False,w_f=0.15",
+    "fact_bonus": {
+      "w_f": 0.15,
+      "min_words": 8,
+      "echo_words_log_only": 15,
+      "rule": "forced_mix.fact_bonus_check: +w_f on FULL use (existing gate); needs call shown, gold cited, no harm flag, >=8 words",
+      "targeted_replay": {
+        "rule": "stillpen._fact_observe/_fact_pick: groups with BOTH a safe full-use hit and a fact-omission miss; one replay per row; <=1 per step; only in existing replay slots with no due conflict entry; all-fail groups logged not replayed",
+        "cfg": "stillpen.FACT_REPLAY"
+      },
+      "base_pkg": "forced_p2_factbonus_v1/pkg_factbonus_p2",
+      "base_forced_mix_sha256": "cd8a99f89fc239c881da5eb837bf91c89adb7fde9ca2097817d21b2fc016af3f"
+    },
+    "gt_clean_edits_sha256": "3028638a0d84bd3eade5fe907ef24487caa19460af3f64af419b53e20386ec29",
+    "key_actions_gtclean_sha256": "f56adea9a9de4cde8ef6bebd3459dfc1fb3a9aca256f57bd185354adbd15bd26",
+    "mie_reward_enabled": false,
+    "mie_judging_for_replay": true,
+    "p6": "forced_mix W6 on both phases; stillpen P1-P5 unchanged (P4 0.2)",
+    "phase1_out": "${PHASE1_RUN}",
+    "phase1_curriculum_log_is_this_trial": true
+  },
+  "steps_run": 25,
+  "execute_env": "P2E_EXECUTE=1"
+}

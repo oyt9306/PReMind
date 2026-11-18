@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "premind"
+version = "0.1.0"
+description = "PReMind: training and evaluation code for PReMind-Bench (personalized, risk-aware memory use in vision-language assistants)"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12,<3.13"
+# Pins = the environment the paper's training / evaluation runs used (conda env "qwen35_trl", Python 3.12.0).
+dependencies = [
+    "torch==2.10.0",
+    "transformers==5.12.1",
+    "peft==0.18.1",
+    "accelerate==1.13.0",
+    "safetensors==0.7.0",
+    "huggingface_hub==1.21.0",
+    "tokenizers==0.22.2",
+    "datasets==5.0.1",
+    "numpy==2.2.6",
+    "pillow==12.1.1",
+    "pyyaml==6.0.3",
+    "requests==2.32.5",
+    "wandb==0.26.1",
+]
+
+[project.optional-dependencies]
+vllm = ["vllm==0.18.0"]                                   # evaluation backend used for the paper tables
+fast-conv = ["flash-linear-attention==0.5.2"]            # optional fused causal conv (same math)
+test = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["premind*"]
+
+[tool.setuptools.package-data]
+"premind.construction.release_steps" = ["inputs/*.json", "inputs/*.jsonl", "inputs/*/*.json", "inputs/*/*.jsonl"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
