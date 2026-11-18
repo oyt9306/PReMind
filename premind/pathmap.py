@@ -1,13 +1,13 @@
 """Path mapping for the research-snapshot data bundles.
 
-The training and evaluation code in ``premind/bv3`` and ``premind/{training/cprime,evaluation/paper}`` is the code that
+The training and evaluation code in ``premind/core`` and ``premind/{training/cprime,evaluation/paper}`` is the code that
 produced the paper. Its data files (releases, manifests, preregistrations, judge outputs) are shipped byte-identical, so
 their integrity hashes still verify, and some of them store the absolute paths of the original machine. ``install()``
 maps those original prefixes to the local bundle at file-system call time (``open``, ``os.stat``, ``os.listdir``, ...).
 Path strings are left unchanged; Path.resolve() / os.path.realpath return the local path for both forms, so
 resolved-path comparisons in the original code keep working.
 
-The prefix table ships with each bundle as ``bv3/PATHMAP.json``: ``{"<original prefix>": "<path relative to premind/>"}``.
+The prefix table ships with each bundle as ``core/PATHMAP.json``: ``{"<original prefix>": "<path relative to premind/>"}``.
 """
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ _MAP: list[tuple[str, str]] = []
 
 def _load() -> list[tuple[str, str]]:
     table: dict[str, str] = {}
-    for p in sorted((ROOT / 'bv3').glob('PATHMAP*.json')):
+    for p in sorted((ROOT / 'core').glob('PATHMAP*.json')):
         table.update(json.loads(p.read_text()))
     out = []
     for src, dst in table.items():

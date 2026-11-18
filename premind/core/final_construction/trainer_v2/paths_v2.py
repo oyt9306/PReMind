@@ -11,7 +11,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 FC = HERE.parent                       # final_construction
-V3 = FC.parent                         # benchmark_v3
+V3 = FC.parent                         # package root
 R6 = V3 / "rl_sweep" / "rlvr_v3_prep" / "r6"
 TI = FC / "train_interface_v1"
 VCM_DIR = FC / "wp_v9_vcm"

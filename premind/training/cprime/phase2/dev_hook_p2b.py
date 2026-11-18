@@ -27,7 +27,7 @@ from typing import Any, Optional
 
 logger = logging.getLogger(__name__)
 HERE = Path(__file__).resolve().parent
-FC = (Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction')
+FC = (Path(__file__).resolve().parents[3] / 'core' / 'final_construction')
 ORIG_DEV = FC / "wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20_hca1/gt_retrieved_drop/dev.jsonl"
 CDEV_INV = FC / "v4_build/conflict_train_aug_v1/INVENTORY_conflict_train_v1_cdev.jsonl"
 DEV_MIE_USD_CAP = 0.25

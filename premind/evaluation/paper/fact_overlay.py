@@ -3,7 +3,7 @@ import sys as _s;from pathlib import Path as _P;_s.path.insert(0,str(_P(__file__
 import sys,json,hashlib,copy
 from pathlib import Path
 from functools import lru_cache
-FC=(Path(__file__).resolve().parents[2] / 'bv3' / 'final_construction');V4=FC/'v4_build'
+FC=(Path(__file__).resolve().parents[2] / 'core' / 'final_construction');V4=FC/'v4_build'
 REPAIRS=FC.parent/'eval_inputs'/'REPAIRS.json'
 FMT=Path(__file__).resolve().parent
 sys.path[:0]=[str(FC),str(FMT)]

@@ -37,7 +37,7 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent
-V4 = (Path(__file__).resolve().parents[2] / 'bv3' / 'final_construction' / 'v4_build')
+V4 = (Path(__file__).resolve().parents[2] / 'core' / 'final_construction' / 'v4_build')
 SUB = V4 / "conflict_fix2_final_v3"
 EVAL = SUB / "eval_v10"
 FINAL_ROWS = SUB / "FINAL_ROWS.jsonl"

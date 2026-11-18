@@ -36,7 +36,7 @@ cannot be distributed.
   responses are excluded from the denominator.
 
 Adequacy, critical harm and MIE are judged by GPT-6-Luna (medium effort) with the frozen rubrics in
-`premind/bv3/final_construction/v4_build/`. The same judge supplies the training reward.
+`premind/core/final_construction/v4_build/`. The same judge supplies the training reward.
 
 ## Running
 
@@ -45,7 +45,7 @@ the code:
 
 ```bash
 tar -xf premind_eval_inputs_v1.tar
-cp -r premind_eval_inputs_v1/bv3/. premind/bv3/
+cp -r premind_eval_inputs_v1/core/. premind/core/
 export PREMIND_EVAL_OUT=$PWD/runs/paper_eval       # inference outputs and judgments are written here
 ```
 
@@ -62,7 +62,7 @@ scripts/eval_premind.sh tables premind4b
 
 Without `--execute`, `judge` prints the number of items it would judge. `base4b` runs the zero-shot base model.
 
-`tables` reads the full-context interdependency verdicts from `bv3/eval_inputs/interdependency_rejudge_rows.jsonl`
+`tables` reads the full-context interdependency verdicts from `core/eval_inputs/interdependency_rejudge_rows.jsonl`
 (rows: model, condition, row_id, seen, `new_JSR_all_axes_raw`); produce them for a new model with the prompts in
 `premind/evaluation/paper/interdependency_judge_prompts.json`.
 

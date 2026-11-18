@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Iterable
 
 WORK = Path(__file__).resolve().parent
-FC = (Path(__file__).resolve().parents[2] / 'bv3' / 'final_construction')
+FC = (Path(__file__).resolve().parents[2] / 'core' / 'final_construction')
 V4 = FC / "v4_build"
 STAGING = WORK / "staging" / "v4_build"
 PY = sys.executable     # CPU tools, vLLM eval.sh driver (as conflict RUNBOOK)

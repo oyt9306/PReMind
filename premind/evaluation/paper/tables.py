@@ -22,7 +22,7 @@ sys.path.insert(0, str(HERE))
 from ft_common import H, jl  # noqa: E402
 import grounding511 as G  # noqa: E402
 
-REJUDGE = Path(__file__).resolve().parents[2] / 'bv3' / 'eval_inputs' / 'interdependency_rejudge_rows.jsonl'
+REJUDGE = Path(__file__).resolve().parents[2] / 'core' / 'eval_inputs' / 'interdependency_rejudge_rows.jsonl'
 
 
 def jsr(key: str, condition: str = 'ondemand') -> dict:

@@ -29,7 +29,7 @@ bundle contains the train/dev releases (`gt_retrieved_drop` contexts), the hazar
 inventories and the other inputs the trainer reads, laid out relative to `premind/`. Unpack it into `premind/`:
 
 ```bash
-tar -xf premind_train_data_v1.tar -C premind/      # creates premind/bv3/... and premind/bv3/PATHMAP_train.json
+tar -xf premind_train_data_v1.tar -C premind/      # creates premind/core/... and premind/core/PATHMAP_train.json
 ```
 
 Data files are byte-identical to the paper run, so their integrity checks pass. Some of them store absolute paths of

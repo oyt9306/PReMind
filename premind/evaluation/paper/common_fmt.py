@@ -1,6 +1,6 @@
 import sys,re,json,collections
 from pathlib import Path
-FC=str(Path(__file__).resolve().parents[2] / 'bv3' / 'final_construction')
+FC=str(Path(__file__).resolve().parents[2] / 'core' / 'final_construction')
 sys.path[:0]=[FC,FC+"/.."]
 from trainer_v2 import reward_v5 as R5, metrics_v9 as MV
 R2=R5.R2

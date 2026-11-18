@@ -26,10 +26,6 @@ Personalized vision-language assistants use visual observations and personal mem
 
 We introduce **PReMind-Bench**, a diagnostic benchmark that evaluates this combination across diverse hazards and personal-memory conditions. It separately measures memory access, grounding, abstention, and hazard response, and assesses joint success on interdependency cases. Existing models often satisfy one requirement while failing the other, and training only for safety or personalization leaves a gap in joint success. We therefore propose **PReMind**, a two-phase reinforcement learning framework that combines on-demand and forced-call interactions (memory always retrieved) to jointly train grounded memory use and hazard response. At 4B, PReMind raises joint success from 12.9% to 28.6% over its base on the interdependency set and improves hazard adequacy and correct abstention on the main test.
 
-<p align="center">
-  <img src="./imgs/examples.jpg" alt="Examples from PReMind-Bench: query image, request, retrieved memory, and answers from PReMind-4B and other models." width="100%">
-</p>
-
 ---
 
 ## Benchmark
@@ -76,7 +72,7 @@ PReMind/
 │   ├── training/cprime/         # PReMind training
 │   │   ├── phase1/              # Phase I (125 steps from Qwen3.5-4B)
 │   │   └── phase2/              # Phase II (25 steps from the Phase I adapter)
-│   ├── bv3/                     # Shared code: data loaders, retrieval, rewards, judges, trainer
+│   ├── core/                    # Shared code: data loaders, retrieval, rewards, judges, trainer
 │   ├── construction/            # Benchmark construction pipeline
 │   ├── prompts/  rewards/       # Prompt templates and rule-based scorers
 │   └── pathmap.py               # Maps paths stored in the data packages to your local copy
@@ -113,7 +109,7 @@ Unpack the evaluation inputs (test release in the evaluation format, retrieval e
 
 ```bash
 tar -xf premind_eval_inputs_v1.tar
-cp -r premind_eval_inputs_v1/bv3/. premind/bv3/
+cp -r premind_eval_inputs_v1/core/. premind/core/
 export PREMIND_EVAL_OUT=$PWD/runs/paper_eval
 ```
 

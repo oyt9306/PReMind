@@ -7,7 +7,7 @@ stream, MIE term, dev hook, 100 steps). ``python prepare_run.py`` writes (write-
 from pathlib import Path
 import hashlib,json,os,subprocess,sys
 os.environ.setdefault('PIN_WORLD','2');os.environ.setdefault('CUR_ACUTE_LADDER','2,2')
-HERE=Path(__file__).resolve().parent;FC=(Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction');sys.path[:0]=[str(HERE),str(FC)]
+HERE=Path(__file__).resolve().parent;FC=(Path(__file__).resolve().parents[3] / 'core' / 'final_construction');sys.path[:0]=[str(HERE),str(FC)]
 import stillpen as SP
 import mie_train as MT
 import dev_hook_p2b as DH
@@ -19,7 +19,7 @@ import advweight_p2e as AW
 PY=sys.executable
 R20=FC/'v4_build/g0_redesign_v1/rebuild_v20'
 ORIGINAL_ARGS=R20/'CUR22S_4b_ARGS.json'
-WS4=(Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction') / 'v4_build/freeze_shortcut_fix/train_stillpen_ws_4b'
+WS4=(Path(__file__).resolve().parents[3] / 'core' / 'final_construction') / 'v4_build/freeze_shortcut_fix/train_stillpen_ws_4b'
 BASE_PREREG=FC/'v4_build/conflict_train_aug_v1/p2e_release/PREREG_RELEASE_MAIN_TRAIN_DEV_v20_hca1_p2e_gt_retrieved_drop.json'
 WS_PREREG=HERE/'PREREG_RELEASE_WS_P2E_v1_s125.json'
 HCA1=WS4/'hca1'
@@ -134,7 +134,7 @@ def block(args):
       'layout':{'world':WORLD,'prompts_per_rank':2,'global_prompts_per_step':4,'gen_batch':16,'num_generations':8,'gpus':list(GPUS)},
       'owner_cap_usd':{'total':AB.CAP_USD,'hazard':float(args[args.index('--hazard-usd-cap')+1]),
                        'warning':float(args[args.index('--warning-usd-cap')+1]),'mie':MT.MIE_USD_CAP,'mie_dev':DH.DEV_MIE_USD_CAP},
-      'forced_trial':{'forced_mix_kwargs':'seed=0,p_present=0.40,p_absent=0.40,p_safe=0.50,w6=0.10,exclude_safe=False,w_f=0.15','fact_bonus':{'w_f':0.15,'min_words':8,'echo_words_log_only':15,'rule':'forced_mix.fact_bonus_check: +w_f on FULL use (existing gate); needs call shown, gold cited, no harm flag, >=8 words','targeted_replay':{'rule':'stillpen._fact_observe/_fact_pick: groups with BOTH a safe full-use hit and a fact-omission miss; one replay per row; <=1 per step; only in existing replay slots with no due conflict entry; all-fail groups logged not replayed','cfg':'stillpen.FACT_REPLAY'},'base_pkg':'forced_p2_factbonus_v1/pkg_factbonus_p2','base_forced_mix_sha256':'cd8a99f89fc239c881da5eb837bf91c89adb7fde9ca2097817d21b2fc016af3f'},'gt_clean_edits_sha256':sha(str((Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction') / 'cprime_inputs' / 'GT_CLEAN_EDITS.jsonl')),'key_actions_gtclean_sha256':sha(str((Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction') / 'cprime_inputs' / 'TRAIN_KEY_ACTIONS_P2E_v1_gtclean.jsonl')),'mie_reward_enabled':False,'mie_judging_for_replay':True,'p6':'forced_mix W6 on both phases; stillpen P1-P5 unchanged (P4 0.2)','phase1_out':'${PHASE1_RUN}','phase1_curriculum_log_is_this_trial':True},
+      'forced_trial':{'forced_mix_kwargs':'seed=0,p_present=0.40,p_absent=0.40,p_safe=0.50,w6=0.10,exclude_safe=False,w_f=0.15','fact_bonus':{'w_f':0.15,'min_words':8,'echo_words_log_only':15,'rule':'forced_mix.fact_bonus_check: +w_f on FULL use (existing gate); needs call shown, gold cited, no harm flag, >=8 words','targeted_replay':{'rule':'stillpen._fact_observe/_fact_pick: groups with BOTH a safe full-use hit and a fact-omission miss; one replay per row; <=1 per step; only in existing replay slots with no due conflict entry; all-fail groups logged not replayed','cfg':'stillpen.FACT_REPLAY'},'base_pkg':'forced_p2_factbonus_v1/pkg_factbonus_p2','base_forced_mix_sha256':'cd8a99f89fc239c881da5eb837bf91c89adb7fde9ca2097817d21b2fc016af3f'},'gt_clean_edits_sha256':sha(str((Path(__file__).resolve().parents[3] / 'core' / 'final_construction') / 'cprime_inputs' / 'GT_CLEAN_EDITS.jsonl')),'key_actions_gtclean_sha256':sha(str((Path(__file__).resolve().parents[3] / 'core' / 'final_construction') / 'cprime_inputs' / 'TRAIN_KEY_ACTIONS_P2E_v1_gtclean.jsonl')),'mie_reward_enabled':False,'mie_judging_for_replay':True,'p6':'forced_mix W6 on both phases; stillpen P1-P5 unchanged (P4 0.2)','phase1_out':'${PHASE1_RUN}','phase1_curriculum_log_is_this_trial':True},
       'steps_run':TE.STOP_AT,'execute_env':TE.EXEC_FLAG+'=1'}
 def write_ws_prereg():
     from trainer_v2 import pins

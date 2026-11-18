@@ -2,10 +2,10 @@
 import sys as _s;from pathlib import Path as _P;_s.path.insert(0,str(_P(__file__).resolve().parents[3]));import pathmap;pathmap.install()   # release: original absolute data paths -> local bundle
 from pathlib import Path
 import json,os,sys
-HERE=Path(__file__).resolve().parent;FC=(Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction')
+HERE=Path(__file__).resolve().parent;FC=(Path(__file__).resolve().parents[3] / 'core' / 'final_construction')
 sys.dont_write_bytecode=True;sys.path[:0]=[str(HERE),str(FC)]
 EXEC_FLAG='FORCED_P1_EXECUTE';PILOT_ENV='FORCED_P1_PILOT_STOP_AT'
-GT_EDITS=str((Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction') / 'cprime_inputs' / 'GT_CLEAN_EDITS.jsonl')
+GT_EDITS=str((Path(__file__).resolve().parents[3] / 'core' / 'final_construction') / 'cprime_inputs' / 'GT_CLEAN_EDITS.jsonl')
 def block(args):
     """Paper AG pin block of THIS argv (prepare_ae.block) + the forced-trial additions."""
     from trainer_v2_v4 import main_v4hcur22s as E0

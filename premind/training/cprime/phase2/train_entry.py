@@ -25,7 +25,7 @@ in-process only."""
 import sys as _s;from pathlib import Path as _P;_s.path.insert(0,str(_P(__file__).resolve().parents[3]));import pathmap;pathmap.install()   # release: original absolute data paths -> local bundle
 from pathlib import Path
 import json,os,sys
-HERE=Path(__file__).resolve().parent;FC=(Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction')
+HERE=Path(__file__).resolve().parent;FC=(Path(__file__).resolve().parents[3] / 'core' / 'final_construction')
 sys.path[:0]=[str(HERE),str(FC)]
 STOP_AT=25
 EXEC_FLAG='P2E_EXECUTE'
@@ -50,7 +50,7 @@ def install_all(args,stop_at=STOP_AT,mie_call=None,dev_call=None):
     monitor_p2c.install(stillpen.load_labels(conflict=stillpen.conflict_ids()))
     advweight_p2e.install(stillpen.tier_map())        # per-size tiers: core 1.0 / 1.5 on replay, late 0.5, learned 0.5, cap 1.25x
     mastery_p2d.install()                             # (rollout temperature split)
-    import forced_mix as FM;FM.install_gt_clean((Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction') / 'cprime_inputs' / 'GT_CLEAN_EDITS.jsonl');FM.install(out,seed=0,p_present=0.40,p_absent=0.40,p_safe=0.50,w6=0.10,exclude_safe=False,w_f=0.15)   # forced trial: last = outermost
+    import forced_mix as FM;FM.install_gt_clean((Path(__file__).resolve().parents[3] / 'core' / 'final_construction') / 'cprime_inputs' / 'GT_CLEAN_EDITS.jsonl');FM.install(out,seed=0,p_present=0.40,p_absent=0.40,p_safe=0.50,w6=0.10,exclude_safe=False,w_f=0.15)   # forced trial: last = outermost
     ENTRY.REFUSED=tuple(f for f in ENTRY.REFUSED if f!='--init-lora');ENTRY.STOP_AT=stop_at
     return ENTRY
 def load_args(name):

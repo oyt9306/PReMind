@@ -3,7 +3,7 @@ import hashlib,json,os,sys
 from pathlib import Path
 H=Path(os.environ.get('PREMIND_EVAL_OUT','runs/paper_eval')).resolve()   # release: outputs (lanes/judges) live here, not next to the code
 CODE=Path(__file__).resolve().parent
-FC=(Path(__file__).resolve().parents[2] / 'bv3' / 'final_construction');V4=FC/'v4_build'
+FC=(Path(__file__).resolve().parents[2] / 'core' / 'final_construction');V4=FC/'v4_build'
 PY=sys.executable
 MAIN=V4/'release_test_v4q_fix2b/RELEASE_TEST_v4q_fix2b';CR=V4/'conflict_fix2_final_v3/RELEASE_TEST_v4q_conflict_v10';EMB=V4/'online/query_emb_test_v4i'
 FIX=CODE

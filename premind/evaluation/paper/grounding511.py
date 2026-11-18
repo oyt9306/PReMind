@@ -17,7 +17,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import fact_overlay as F  # noqa: E402
 
-IDS = HERE.parents[1] / 'bv3' / 'eval_inputs' / 'paper511_ids.json'
+IDS = HERE.parents[1] / 'core' / 'eval_inputs' / 'paper511_ids.json'
 
 
 def jl(p: Path) -> list[dict]:

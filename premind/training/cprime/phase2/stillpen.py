@@ -90,12 +90,12 @@ from typing import Any, Optional
 
 logger = logging.getLogger(__name__)
 HERE = Path(__file__).resolve().parent
-FC = (Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction')
+FC = (Path(__file__).resolve().parents[3] / 'core' / 'final_construction')
 KEY_ACTIONS_V20 = FC / "v4_build/g0_redesign_v1/rebuild_v20/TRAIN_KEY_ACTIONS_v20.jsonl"
 RELEASE_TRAIN_V20 = FC / "wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20/gt_retrieved_drop/train.jsonl"
 ORIG_KEY_ACTIONS = FC / "v4_build/freeze_shortcut_fix/train_stillpen_ws_4b/hca1/TRAIN_KEY_ACTIONS_v20_hca1b.jsonl"   # v2 run
 ORIG_RELEASE_TRAIN = FC / "wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20_hca1/gt_retrieved_drop/train.jsonl"                # v2 run
-KEY_ACTIONS = (Path(__file__).resolve().parents[3] / 'bv3' / 'final_construction') / 'cprime_inputs' / 'TRAIN_KEY_ACTIONS_P2E_v1_gtclean.jsonl'    # hca1b + 63 v1 + 87 v2 conflict rows
+KEY_ACTIONS = (Path(__file__).resolve().parents[3] / 'core' / 'final_construction') / 'cprime_inputs' / 'TRAIN_KEY_ACTIONS_P2E_v1_gtclean.jsonl'    # hca1b + 63 v1 + 87 v2 conflict rows
 RELEASE_TRAIN = FC / "wp_v9_vcm/prod_v9/RELEASE_TRAIN_DEV_v20_hca1_p2e/gt_retrieved_drop/train.jsonl"
 MIE_INVENTORY = FC / "v4_build/conflict_train_aug_v1/p2e_release/MIE_INVENTORY_TRAIN_P2E_v1.jsonl"
 CONFLICT = {"every": 4, "offset": 2}             # mode p2b conflict stream positions
