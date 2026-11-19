@@ -5,6 +5,10 @@ type: software
 version: 1.0.0
 license: Apache-2.0
 repository-code: "https://github.com/oyt9306/PReMind"
+identifiers:
+  - type: other
+    value: "arXiv:2611.23808"
+url: "https://arxiv.org/abs/2611.23808"
 authors:
   - family-names: "Oh"
     given-names: "Yeongtak"

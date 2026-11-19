@@ -8,7 +8,7 @@
   </a>
 </p>
 
-[![arXiv](https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg)](#)
+[![arXiv](https://img.shields.io/badge/arXiv-2611.23808-b31b1b.svg)](https://arxiv.org/abs/2611.23808)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-PReMind--4B-yellow)](https://huggingface.co/Yeongtak/PReMind-4B)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-PReMind--Bench-yellow)](https://huggingface.co/datasets/Yeongtak/PReMind-Bench)
 
@@ -155,10 +155,11 @@ model = PeftModel.from_pretrained(model, "Yeongtak/PReMind-4B").eval()
 ## Citation
 
 ```bibtex
-@misc{oh2026premind,
-  title  = {PReMind: When Personal Memory Meets Visual Hazards},
-  author = {Oh, Yeongtak and Lee, Donghyeok and Oh, Joonhee and Jeong, Jaewon and Yoon, Sungroh},
-  year   = {2026}
+@article{oh2026premind,
+  title   = {PReMind: When Personal Memory Meets Visual Hazards},
+  author  = {Oh, Yeongtak and Lee, Donghyeok and Oh, Joonhee and Jeong, Jaewon and Yoon, Sungroh},
+  journal = {arXiv preprint arXiv:2611.23808},
+  year    = {2026}
 }
 ```
 
